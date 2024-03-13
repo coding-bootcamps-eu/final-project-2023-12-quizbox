@@ -8,30 +8,21 @@
       </nav>
       <h1 class="">Quizbox</h1>
     </div>
-    <nav class="page-header__menu--secondary" :class="{ visible: showNav, hidden: !showNav }">
+    <nav class="page-header__menu--secondary">
       <div class="nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <router-link
-              :to="{ name: 'quizbox' }"
-              class="text--light-colored"
-              @click="oncollapseMenu"
+            <router-link :to="{ name: 'quizbox' }" class="text--light-colored"
               >Play Quizbox</router-link
             >
           </li>
           <li class="nav__item">
-            <router-link
-              :to="{ name: 'questions' }"
-              class="text--light-colored"
-              @click="oncollapseMenu"
+            <router-link :to="{ name: 'questions' }" class="text--light-colored"
               >Browse Questions</router-link
             >
           </li>
-          <li class="nav__item" v-if="sessionActive">
-            <router-link
-              :to="{ name: 'session' }"
-              class="text--light-colored"
-              @click="oncollapseMenu"
+          <li class="nav__item">
+            <router-link :to="{ name: 'session' }" class="text--light-colored"
               >Resume Session</router-link
             >
           </li>
