@@ -10,7 +10,7 @@
         >Quiz time - test what you know</label
       >
       <div class="select-wrapper">
-        <select id="select-option">
+        <select id="select-option" v-model="numberQuestions">
           <option value="15">15 Questions</option>
           <option value="30">30 Questions</option>
         </select>
@@ -99,7 +99,14 @@
           </div>
         </li>
       </ul>
-      <button>Start Quizbox</button>
+      <router-link :to="'/session?numberQuestions=' + numberQuestions">Start Quizbox</router-link>
     </div>
   </main>
 </template>
+<script>
+export default {
+  data() {
+    return { numberQuestions: 15 }
+  }
+}
+</script>

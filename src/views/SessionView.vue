@@ -8,6 +8,10 @@
     <div>Session finished</div>
     <RouterLink :to="{ name: 'quizbox' }">Back to Home</RouterLink>
   </div>
+  <div>
+    <router-link :to="'/session?numberQuestions=15'">Start Quizbox</router-link>
+    <router-link :to="'/session?numberQuestions=30'">Start Quizbox</router-link>
+  </div>
 </template>
 
 <script>
