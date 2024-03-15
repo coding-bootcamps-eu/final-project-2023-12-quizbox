@@ -99,7 +99,10 @@
           </div>
         </li>
       </ul>
-      <router-link :to="'/session?numberQuestions=' + numberQuestions">Start Quizbox</router-link>
+      <router-link
+        :to="'/session?numberQuestions=' + numberQuestions + '&basic-js=1&terminal-and-shell=0'"
+        >Start Quizbox</router-link
+      >
     </div>
   </main>
 </template>

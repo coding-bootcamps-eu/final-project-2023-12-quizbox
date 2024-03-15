@@ -8,10 +8,6 @@
     <div>Session finished</div>
     <RouterLink :to="{ name: 'quizbox' }">Back to Home</RouterLink>
   </div>
-  <div>
-    <router-link :to="'/session?numberQuestions=15'">Start Quizbox</router-link>
-    <router-link :to="'/session?numberQuestions=30'">Start Quizbox</router-link>
-  </div>
 </template>
 
 <script>
@@ -22,7 +18,7 @@ export default {
 
   data() {
     return {
-      questions: questions['basic-js'].slice(0, 5),
+      questions: [],
       currentIndex: 0
     }
   },
@@ -30,6 +26,20 @@ export default {
     next() {
       this.currentIndex = this.currentIndex + 1
     }
+  },
+  mounted() {
+    const numberQuestions = parseInt(this.$route.query.numberQuestions) || 15
+    const questionsToChooseFrom = []
+
+    if (this.$route.query['basic-js'] == '1') {
+      questionsToChooseFrom.push(...questions['basic-js'])
+    }
+
+    // Shuffle array
+    const shuffled = questionsToChooseFrom.sort(() => 0.5 - Math.random())
+
+    // Get sub-array of first n elements after shuffled
+    this.questions = shuffled.slice(0, numberQuestions)
   }
 }
 </script>

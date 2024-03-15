@@ -1,14 +1,14 @@
 <template>
   <header>
     <div class="wrapper">
-      <nav class="hamburger-menu">
+      <nav class="hamburger-menu" @click="hamburgerMenuIsOpen = !hamburgerMenuIsOpen">
         <span class="hamburger-menu__icon"></span>
         <span class="hamburger-menu__icon"></span>
         <span class="hamburger-menu__icon"></span>
       </nav>
       <h1 class="">Quizbox</h1>
     </div>
-    <nav class="page-header__menu--secondary">
+    <nav class="page-header__menu--secondary" v-if="hamburgerMenuIsOpen">
       <div class="nav">
         <ul class="nav__list">
           <li class="nav__item">
@@ -33,3 +33,16 @@
 
   <RouterView />
 </template>
+<script>
+export default {
+  data() {
+    return {
+      hamburgerMenuIsOpen: false
+    }
+  },
+
+  computed: {},
+
+  methods: {}
+}
+</script>

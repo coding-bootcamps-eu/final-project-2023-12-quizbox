@@ -513,3 +513,12 @@ ul {
     font-size: 12px;
   }
 }
+@media screen and (max-width: 360px) {
+  .nav__list {
+    visibility: hidden;
+    background-color: black;
+  }
+  .nav {
+    height: 10px;
+  }
+}
