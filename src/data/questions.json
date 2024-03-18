@@ -1,5 +1,5 @@
 {
-  "basic-js": [
+  "basics-js": [
     "Name the two different data types in JavaScript",
     "Name three data types?",
     "What are structural data types?",
@@ -94,5 +94,7 @@
     "What is the 'pwd' command?",
     "What is the 'chmod' command?",
     "What is the 'which' command?"
-  ]
+  ],
+  "basic-html-css": [],
+  "advanced-html-css": []
 }

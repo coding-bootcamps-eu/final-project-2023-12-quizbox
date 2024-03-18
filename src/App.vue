@@ -1,13 +1,15 @@
 <template>
   <header>
-    <div class="wrapper">
-      <nav class="hamburger-menu" @click="hamburgerMenuIsOpen = !hamburgerMenuIsOpen">
-        <span class="hamburger-menu__icon"></span>
-        <span class="hamburger-menu__icon"></span>
-        <span class="hamburger-menu__icon"></span>
-      </nav>
-      <h1 class="">Quizbox</h1>
-    </div>
+    <h1 class="">
+      Quizbox
+      <div class="wrapper">
+        <nav class="hamburger-menu" @click="hamburgerMenuIsOpen = !hamburgerMenuIsOpen">
+          <span class="hamburger-menu__icon"></span>
+          <span class="hamburger-menu__icon"></span>
+          <span class="hamburger-menu__icon"></span>
+        </nav>
+      </div>
+    </h1>
     <nav class="page-header__menu--secondary" v-if="hamburgerMenuIsOpen">
       <div class="nav">
         <ul class="nav__list">
@@ -46,3 +48,10 @@ export default {
   methods: {}
 }
 </script>
+<style>
+.wrapper {
+  position: relative;
+  right: 50%;
+  bottom: 50%;
+}
+</style>

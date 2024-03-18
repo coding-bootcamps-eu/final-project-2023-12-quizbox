@@ -38,78 +38,64 @@
         </div>
       </header>
       <ul class="list-item">
-        <li>
-          <div class="flex-container--checklist list-item list-item--checklist">
-            <input type="checkbox" id="basics-html-css" class="checkbox" value="basics-html-css" />
-            <label for="basics-html-css">
-              <p class="text--sourcesanspro text--regular text--semibold">Web Dev Foundation</p>
-              <p class="text--extraslim text--extrasmall text--sourcesanspro">66 Questions</p>
-            </label>
-          </div>
-        </li>
-        <li>
+        <li v-for="(question, index) of questionList" :key="index">
           <div class="flex-container--checklist list-item list-item--checklist">
             <input
               type="checkbox"
-              id="advanced-html-css"
+              :id="question.id"
               class="checkbox"
-              value="advanced-html-css"
+              v-model="checkboxSelection[question.id]"
+              :value="question.id"
             />
-            <label for="advanced-html-css">
-              <p class="text--sourcesanspro text--regular text--semibold">Advanced HTML</p>
-              <p class="text--extraslim text--extrasmall text--sourcesanspro">29 Questions</p>
-            </label>
-          </div>
-        </li>
-        <li>
-          <div class="flex-container--checklist list-item list-item--checklist">
-            <input type="checkbox" id="basics-js" class="checkbox" value="basics-js" />
-            <label for="basics-js">
-              <p class="text--sourcesanspro text--regular text--semibold">Coding Foundation</p>
-              <p class="text--extraslim text--extrasmall text--sourcesanspro">33 Questions</p>
-            </label>
-          </div>
-        </li>
-        <li>
-          <div class="flex-container--checklist list-item list-item--checklist">
-            <input
-              type="checkbox"
-              id="first-js-web-app"
-              class="checkbox"
-              value="first-js-web-app"
-            />
-            <label for="first-js-web-app">
-              <p class="text--sourcesanspro text--regular text--semibold">Web Apps Foundation</p>
-              <p class="text--extraslim text--extrasmall text--sourcesanspro">34 Questions</p>
-            </label>
-          </div>
-        </li>
-        <li>
-          <div class="flex-container--checklist list-item list-item--checklist">
-            <input
-              type="checkbox"
-              id="terminal-and-shell"
-              class="checkbox"
-              value="terminal-and-shell"
-            />
-            <label for="terminal-and-shell">
-              <p class="text--sourcesanspro text--regular text--semibold">Terminal and Shell</p>
-              <p class="text--extraslim text--extrasmall text--sourcesanspro">21 Questions</p>
+            <label :for="question.id">
+              <p class="text--sourcesanspro text--regular text--semibold">{{ question.label }}</p>
+              <p class="text--extraslim text--extrasmall text--sourcesanspro">
+                {{ questions[question.id].length }} Questions
+              </p>
             </label>
           </div>
         </li>
       </ul>
-      <router-link
-        :to="'/session?numberQuestions=' + numberQuestions + '&basic-js=1&terminal-and-shell=0'"
-        >Start Quizbox</router-link
-      >
+      <router-link :to="generateQuizLink">Start Quizbox</router-link>
     </div>
   </main>
 </template>
 <script>
+import questions from '@/data/questions.json'
 export default {
   data() {
-    return { numberQuestions: 15 }
+    return {
+      questions,
+      numberQuestions: 15,
+      checkboxSelection: {
+        'basic-html-css': false,
+        'advanced-html-css': false,
+        'basics-js': false,
+        'first-js-web-app': false,
+        'terminal-and-shell': false
+      },
+      questionList: [
+        { id: 'basic-html-css', label: 'Web Dev Foundation', count: 66 },
+        { id: 'advanced-html-css', label: 'Advanced HTML', count: 29 },
+        { id: 'basics-js', label: 'Coding Foundation', count: 33 },
+        { id: 'web-app-foundation', label: 'Web Apps Foundation', count: 34 },
+        { id: 'terminal-and-shell', label: 'Terminal and Shell', count: 21 }
+      ]
+    }
+  },
+
+  computed: {
+    generateQuizLink() {
+      let queryString = `/session?numberQuestions=${this.numberQuestions}`
+      for (let checkbox in this.checkboxSelection) {
+        if (this.checkboxSelection[checkbox]) {
+          queryString += `&${checkbox}=1`
+        } else {
+          queryString += `&${checkbox}=0`
+        }
+      }
+      return queryString
+    }
   }
 }
 </script>

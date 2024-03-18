@@ -413,7 +413,7 @@ ul {
   margin-top: 0;
   text-align: right;
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 2000px) {
   #app,
   body,
   main {
@@ -503,12 +503,12 @@ ul {
     transform: translateX(-240px);
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 2000px) {
   .flex-container--main {
     width: var(--el-width);
   }
 }
-@media screen and (max-width: 360px) {
+/*@media screen and (max-width: 360px) {
   nav a {
     font-size: 12px;
   }
@@ -521,4 +521,4 @@ ul {
   .nav {
     height: 10px;
   }
-}
+}*/
